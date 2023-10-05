@@ -1,0 +1,45 @@
+aside{
+    background-color: #131B26;
+    width: 64px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .top-icons__logo{
+    margin-top: 12px;
+    margin-left: 13px;
+    margin-bottom: 42.9px;
+    width: 38px;
+    height: 38px;
+  }
+  
+  .aside__top{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 250px;
+  }
+  
+  .aside__bottom{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  .aside__profile{
+    width: 32px;
+    height: 32px;
+    border-radius: 1px;
+    border: 1px solid white;
+    border-radius: 7px;
+    margin-left: 16px;
+  }
+  
+  .aside__icons{
+    color: white;
+    padding-bottom: 16.36px;
+    padding-left: 15.9px;
+    margin-left: 4px;
+    margin-bottom: 32.64px;
+  }
