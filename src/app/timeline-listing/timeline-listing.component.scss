@@ -49,7 +49,7 @@
     border-radius: 4px;
     margin-left: 16px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
   }
   
@@ -57,10 +57,10 @@
     height: 16px;
     width: 222px;
     color: rgba(27,35,88,0.87);
-    font-size: 10px;
-    letter-spacing: 1px;
+    font-size: 9.8px;
+    letter-spacing: 0.7px;
     line-height: 16px;
-    font-weight: 500;
+    font-weight: 400;
   }
   
   .id-card__copy-icon{
@@ -136,17 +136,11 @@
     height: 56px;
     padding-left: 5px;
   }
-  
-  .info__localitation--blue{
-    display: flex;
-    align-items: center;
-    margin-top: 11px;
-    column-gap: 13px;
-    background-color: rgba(0,162,255,0.16);
-    width: 1021.79px;
-    height: 56px;
-    padding-left: 5px;
+
+  .info__localitation:hover {
+    background-color: rgba(0,162,255,0.16); /* Cambia el color de fondo al pasar el ratón sobre el elemento */
   }
+  
   
   .info__address{
     display: flex;
@@ -183,8 +177,8 @@
   }
   
   .info__address span {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
     color: rgba(27,35,88,0.87);
   }
   

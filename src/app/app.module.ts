@@ -6,6 +6,13 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { CustomerTimelineComponent } from './customer-timeline/customer-timeline.component';
 import { TimelineListingComponent } from './timeline-listing/timeline-listing.component';
 import { DateFormatPipe } from './date-format.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import {MatDividerModule} from '@angular/material/divider';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +23,12 @@ import { DateFormatPipe } from './date-format.pipe';
     DateFormatPipe
   ],
   imports: [
-    BrowserModule
+    MatMenuModule,
+    MatButtonModule,
+    BrowserModule,
+    MatIconModule,
+    MatDividerModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

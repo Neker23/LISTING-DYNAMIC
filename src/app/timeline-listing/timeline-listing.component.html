@@ -235,9 +235,9 @@
 
 
 <!-- LISTA DINAMICA -->
-<button (click)="onOrder()">Ordenar</button>
+<!-- <button (click)="onOrder()">Ordenar</button>
 <button (click)="onSeparete()">Separar</button>
-<button (click)="onRender()">Mostrar</button>
+<button (click)="onRender()">Mostrar</button> -->
 
 
 
@@ -292,11 +292,11 @@
               <span class="credencials__radio-icon material-symbols-outlined">radio_button_checked</span>
               <div class="credencials__info">
                 <h3 class="info__title">{{credentials.title}}</h3>
-                <div [class.info__localitation--blue]="credentials.verified" class="info__localitation">
+                <div class="info__localitation">
                     <span class="info__star material-icons-sharp">star</span>
                     <span class="info__place-icon material-icons-sharp">badge</span>
                     <div class="info__address">
-                      <span><img class="schedule__flag--inline" src="./assets/images/eeuu-flag.png" alt="">{{credentials.documentType}}</span>
+                      <span><img class="schedule__flag--inline" src="./assets/images/eeuu-flag.png" alt=""> {{credentials.documentType}}</span>
                       <span class="verify-id">{{credentials.documentNumber}}</span>
                       <div *ngIf="credentials.verified" class="verified-logo">Verified</div>
                     </div> 

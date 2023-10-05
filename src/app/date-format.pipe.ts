@@ -3,24 +3,34 @@ import { format } from 'date-fns';
 import { DatePipe } from '@angular/common';
 
 @Pipe({
-  name: 'dateFormat'
+  name: 'dateFormat',
 })
 export class DateFormatPipe implements PipeTransform {
-
   transform(value: string): string {
     const datePipe = new DatePipe('en-US');
     const currentDate = new Date();
     const inputDate = new Date(value);
+    console.log(
+      {value,
+        currentDate,
+        inputDate,
+        currentDatelog: currentDate.getDate(),
+        inputDatelog: inputDate.getDate()}
+    );
 
     if (
-      currentDate.getFullYear() === inputDate.getFullYear() &&
-      currentDate.getMonth() === inputDate.getMonth() &&
-      currentDate.getDate() === inputDate.getDate()
+      currentDate.getUTCFullYear() === inputDate.getUTCFullYear() &&
+      currentDate.getUTCMonth() === inputDate.getUTCMonth() &&
+      currentDate.getUTCDate() === inputDate.getUTCDate()
     ) {
       return 'Today';
+    } else if(
+      currentDate.getUTCFullYear() === inputDate.getUTCFullYear() &&
+      currentDate.getUTCMonth() === inputDate.getUTCMonth() &&
+      currentDate.getUTCDate() - 1  === inputDate.getUTCDate()) {
+      return 'Yesterday';
     } else {
       return datePipe.transform(value, 'MMM-dd-yyyy'); // Formato por defecto si no es 'Today'
     }
   }
-
 }
