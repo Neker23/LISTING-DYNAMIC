@@ -21,13 +21,21 @@
   <main>
     
     <div class="main__sub-header">
+      <div class="items--left">
         <span class="sub-header__icon material-icons-sharp">arrow_back</span>
         <h2>Timeline</h2>
-        <button>Filter</button>
-        <mat-icon>more_vert</mat-icon>
+      </div>
+      <div class="items--right">
+        <mat-icon [matMenuTriggerFor]="menu" class="main__sub-header__menu-more">more_vert</mat-icon>
         <span class="sub-header__filter material-icons-sharp">filter_list</span>
+      </div>
     </div>
-    
+
+    <mat-menu [xPosition]="'before'" #menu="matMenu">
+      <button mat-menu-item><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon><span>Add</span></button>
+    </mat-menu>
+
+
     <div class="filters">
       <div class="filter">
         <span>02/02/2020 - 02/06/2020</span>
