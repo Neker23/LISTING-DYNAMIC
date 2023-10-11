@@ -249,19 +249,19 @@
 
     <ng-container *ngFor="let card of groupDate.data">
       <div class="card" >
-        <img class="card__img" src="./assets/images/profile.PNG" alt="">
+        <img class="card__img" [src]="card.photoURL" alt="">
         <div class="card__column">
           <h4>{{card.username}}, log ID:</h4>
           <div class="id-card">
-            <span class="id-card__number" >{{card.id}}</span>
-            <span class="id-card__copy-icon material-icons-sharp">content_copy</span>
+            <span [id]="card.id" class="id-card__number" >{{card.id}}</span>
+            <span (click)="onCopy(card.id)" class="id-card__copy-icon material-icons-sharp">content_copy</span>
           </div>
           <div class="schedule">
-            <span class="schedule__time">10:00:00</span>
-            <span class="schedule__device-icon material-icons-sharp">laptop_mac</span>
-            <span class="schedule__device">Macbook PRO</span>
-            <img class="schedule__flag" src="./assets/images/eeuu-flag.png" alt=""> 
-            <div class="schedule__place" >USA, Florida</div>
+            <span class="schedule__time">{{card.time}}</span>
+            <span class="schedule__device-icon material-icons-sharp">{{card.device_icon}}</span>
+            <span class="schedule__device">{{card.device}}</span>
+            <span class="schedule__flag" [ngClass]="'fi fi-' + card.flag"></span>
+            <div class="schedule__place" >{{card.localization}}</div>
           </div>
         </div>
       </div>
@@ -296,7 +296,7 @@
                     <span class="info__star material-icons-sharp">star</span>
                     <span class="info__place-icon material-icons-sharp">badge</span>
                     <div class="info__address">
-                      <span><img class="schedule__flag--inline" src="./assets/images/eeuu-flag.png" alt=""> {{credentials.documentType}}</span>
+                      <span><span [ngClass]="'fi fi-' + card.flag" img class="schedule__flag--inline"></span> {{credentials.documentType}}</span>
                       <span class="verify-id">{{credentials.documentNumber}}</span>
                       <div *ngIf="credentials.verified" class="verified-logo">Verified</div>
                     </div> 
@@ -315,7 +315,7 @@
                     <span class="info__star material-icons-sharp">star</span>
                     <span class="info__place-icon material-icons-sharp">phone</span>
                     <div class="info__address">
-                      <span><img class="schedule__flag--inline" src="./assets/images/eeuu-flag.png" alt=""> {{credentials.phoneNumber}}</span>
+                      <span><span [ngClass]="'fi fi-' + card.flag" img class="schedule__flag--inline"></span> {{credentials.phoneNumber}}</span>
                     </div> 
                   </div>
               </div>

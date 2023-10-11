@@ -8,14 +8,13 @@ import { DatePerUser } from './timeline-listing.interface';
   styleUrls: ['./timeline-listing.component.scss'],
 })
 export class TimelineListingComponent implements OnInit {
-
   private _data = TIMELINE_DATA;
   dateMap: DatePerUser[] = [];
   showItems = false;
 
   ngOnInit(): void {
     this.onOrder();
-    this.onSeparete()
+    this.onSeparete();
     this.onRender();
   }
 
@@ -48,5 +47,19 @@ export class TimelineListingComponent implements OnInit {
 
   onRender() {
     this.showItems = !this.showItems;
+  }
+
+  onCopy(id) {
+    const textoACopiar = document.getElementById(id);
+    // Crear un rango de selección
+    const rango = document.createRange();
+    rango.selectNode(textoACopiar);
+    // Seleccionar el texto en el rango
+    window.getSelection().removeAllRanges(); // Limpiar selecciones anteriores
+    window.getSelection().addRange(rango);
+    // Intentar copiar el texto al portapapeles
+      document.execCommand('copy');
+    // Limpiar la selección
+    window.getSelection().removeAllRanges();
   }
 }

@@ -32,7 +32,7 @@
     </div>
 
     <mat-menu [xPosition]="'before'" #menu="matMenu">
-      <button mat-menu-item><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon><span>Add</span></button>
+      <button (click)="openDialog()" mat-menu-item><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon><span>Add</span></button>
     </mat-menu>
 
 

@@ -1,7 +1,12 @@
 export interface UserData {
+    id:          string;
     username:    string;
     photoURL:    string;
-    id:          string;
+    flag:        string;
+    device:      string;
+    device_icon: string;
+    localization:string;
+    time:        string;
     date:        string;
     credential?: UserCredential[];
 }
