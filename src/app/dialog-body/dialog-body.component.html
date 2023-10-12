@@ -42,12 +42,25 @@
         <input matInput type="text" [formControl]="myForm.controls.documentNumber" />
       </mat-form-field>
 
-      <mat-slide-toggle [formControl]="myForm.controls.verified">Verified</mat-slide-toggle>
+      <mat-slide-toggle class="toggleVerify" color="primary" [formControl]="myForm.controls.verified">Verified</mat-slide-toggle>
 
     </div>
 
     <div *ngSwitchCase="'phone'">
       title: 'Credencials/Phone', phoneNumber: '+1 303-999-999901',
+      <mat-form-field>
+        <mat-label>Document Type</mat-label>
+        <mat-select [formControl]="myForm.controls.documentType">
+          <mat-option *ngFor="let document of documents" [value]="document.id">{{document.nombre}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Document Number</mat-label>
+        <input matInput type="text" [formControl]="myForm.controls.documentNumber" />
+      </mat-form-field>
+
+      <mat-slide-toggle class="toggleVerify" color="primary" [formControl]="myForm.controls.verified">Verified</mat-slide-toggle>
     </div>
 
     <div *ngSwitchCase="'address'">
