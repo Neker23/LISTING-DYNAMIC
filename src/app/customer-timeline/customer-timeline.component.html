@@ -26,14 +26,9 @@
         <h2>Timeline</h2>
       </div>
       <div class="items--right">
-        <mat-icon [matMenuTriggerFor]="menu" class="main__sub-header__menu-more">more_vert</mat-icon>
         <span class="sub-header__filter material-icons-sharp">filter_list</span>
       </div>
     </div>
-
-    <mat-menu [xPosition]="'before'" #menu="matMenu">
-      <button (click)="openDialog()" mat-menu-item><mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="add"></mat-icon><span>Add</span></button>
-    </mat-menu>
 
 
     <div class="filters">

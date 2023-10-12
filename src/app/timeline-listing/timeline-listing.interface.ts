@@ -8,7 +8,7 @@ export interface UserData {
     localization:string;
     time:        string;
     date:        string;
-    credential?: UserCredential[];
+    credential: UserCredential[];
 }
 
 interface UserCredential {

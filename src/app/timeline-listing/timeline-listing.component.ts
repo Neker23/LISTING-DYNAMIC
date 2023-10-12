@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TIMELINE_DATA } from './timeline-listing.data';
 import { DatePerUser } from './timeline-listing.interface';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
 
 @Component({
   selector: 'app-timeline-listing',
@@ -11,6 +13,8 @@ export class TimelineListingComponent implements OnInit {
   private _data = TIMELINE_DATA;
   dateMap: DatePerUser[] = [];
   showItems = false;
+
+  constructor(private matDialog: MatDialog) {}
 
   ngOnInit(): void {
     this.onOrder();
@@ -62,4 +66,20 @@ export class TimelineListingComponent implements OnInit {
     // Limpiar la selección
     window.getSelection().removeAllRanges();
   }
+
+  openDialog2(card_id){
+    console.log('dialog 2 funcionando')
+    const dialogRef = this.matDialog.open(DialogBodyComponent, {
+      width: '450px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Aquí puedes acceder a la información devuelta por el diálogo
+      if (result) {
+        const item = TIMELINE_DATA.find((element) => element.id == card_id);
+        item.credential.push(result.data);
+      }
+    });
+  }
+  
 }

@@ -31,6 +31,7 @@ const TIMELINE_DATA: UserData[] = [
     localization: 'PE, Lima',
     date: '2021-04-02',
     time: '09:15:00',
+    credential: [ ]
   },
   {
     id: '635AAD33-05E8-433B-9504-B293587800D6',

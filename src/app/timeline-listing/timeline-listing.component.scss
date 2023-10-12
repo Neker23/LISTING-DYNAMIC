@@ -18,6 +18,16 @@
     border-radius: 4px;
     margin-left: 80px;
   }
+
+  .card__usuario{
+    display: flex;
+    height: 33px;
+  }
+
+  .card__button-more{
+    font-size: 17px;
+    color: rgba(27, 35, 88, 0.6);
+  }
   
   .card__img{
     box-sizing: border-box;

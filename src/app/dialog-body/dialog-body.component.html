@@ -3,74 +3,92 @@
 </button> -->
 
 <mat-dialog-content>
-  <h4 class="title">Put user ID</h4>
+  <!-- <h4 class="title">Put user ID</h4> -->
 
-  <mat-form-field class="example-full-width">
+  <!-- <mat-form-field class="example-full-width">
     <mat-label>ID</mat-label>
     <input
       matInput
       [formControl]="myForm.controls.id"
       placeholder="id number"
     />
-  </mat-form-field>
+  </mat-form-field> -->
 
   <h4 class="title">Select type of item</h4>
   <mat-form-field>
     <mat-label>Type</mat-label>
-    <mat-select [formControl]="myForm.controls.typeDoc">
+    <mat-select [formControl]="myForm.controls.typeItem" (selectionChange)="onTypeChange($event)">
       <mat-option *ngFor="let type of typeItems" [value]="type">
-        {{ type }}
+        {{ type }}  
       </mat-option>
     </mat-select>
-    <mat-label>ID</mat-label>
   </mat-form-field>
 
-  <h4>{{ myForm.controls.typeDoc.value }}</h4>
+  <h4 class="text-capitalized">{{ myForm.controls.typeItem.value }}</h4>
 
-  <div [ngSwitch]="myForm.controls.typeDoc.value">
+  <div [ngSwitch]="myForm.controls.typeItem.value">
     <div *ngSwitchCase="'document'">
 
       <mat-form-field>
         <mat-label>Document Type</mat-label>
-        <mat-select [formControl]="myForm.controls.documentType">
+        <mat-select [formControl]="myForm.controls.document.controls.documentType">
           <mat-option *ngFor="let document of documents" [value]="document.id">{{document.nombre}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
         <mat-label>Document Number</mat-label>
-        <input matInput type="text" [formControl]="myForm.controls.documentNumber" />
+        <input matInput type="text" [formControl]="myForm.controls.document.controls.documentNumber" />
       </mat-form-field>
 
-      <mat-slide-toggle class="toggleVerify" color="primary" [formControl]="myForm.controls.verified">Verified</mat-slide-toggle>
+      <mat-slide-toggle class="toggleVerify" [formControl]="myForm.controls.document.controls.verified" color="primary">Verified</mat-slide-toggle>
 
     </div>
 
     <div *ngSwitchCase="'phone'">
-      title: 'Credencials/Phone', phoneNumber: '+1 303-999-999901',
+
       <mat-form-field>
-        <mat-label>Document Type</mat-label>
-        <mat-select [formControl]="myForm.controls.documentType">
-          <mat-option *ngFor="let document of documents" [value]="document.id">{{document.nombre}}</mat-option>
+        <mat-label>Phone Number</mat-label>
+        <input matInput type="text" [formControl]="myForm.controls.phone.controls.phoneNumber" />
+      </mat-form-field>
+
+    </div>
+
+    <div *ngSwitchCase="'address'">
+
+      <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput type="text" [formControl]="myForm.controls.address.controls.address" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>State</mat-label>
+        <input matInput type="text" [formControl]="myForm.controls.address.controls.state" />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Country</mat-label>
+        <input matInput type="text" [formControl]="myForm.controls.address.controls.country" />
+      </mat-form-field>
+    </div>
+
+    <div *ngSwitchCase="'change'">
+
+      <mat-form-field>
+        <mat-label>Change Type</mat-label>
+        <mat-select [formControl]="myForm.controls.change.controls.title">
+          <mat-option *ngFor="let title of change" [value]="title.nombre">{{title.nombre}}</mat-option>
         </mat-select>
       </mat-form-field>
 
       <mat-form-field>
-        <mat-label>Document Number</mat-label>
-        <input matInput type="text" [formControl]="myForm.controls.documentNumber" />
+        <mat-label>{{myForm.controls.change.controls.title.value}} Before</mat-label>
+        <input matInput type="text" [formControl]="myForm.controls.change.controls.before" />
       </mat-form-field>
 
-      <mat-slide-toggle class="toggleVerify" color="primary" [formControl]="myForm.controls.verified">Verified</mat-slide-toggle>
-    </div>
+      <mat-form-field>
+        <mat-label>{{myForm.controls.change.controls.title.value}} After</mat-label>
+        <input matInput type="text" [formControl]="myForm.controls.change.controls.after" />
+      </mat-form-field>
 
-    <div *ngSwitchCase="'address'">
-      title: 'Credencials/Address', address: 'Provence-Alpes-Côte dAzur', state:
-      ' Marseille', country: 'Francia',
-    </div>
-
-    <div *ngSwitchCase="'change'">
-      type: 'change', title: 'Credencials/Personal information/Basic info/Full
-      name', before: 'Julian Romero', after: 'Julian Romero',
     </div>
 
     <div *ngSwitchDefault>Select type of item</div>
@@ -78,6 +96,6 @@
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
-  <button mat-raised-button color="warn" matDialogClose>Cancel</button>
+  <button mat-raised-button color="primary" [disabled]="!myForm.valid" (click)="onSubmit()">Save</button>
+  <button mat-raised-button matDialogClose color="warn">Cancel</button>
 </mat-dialog-actions>
