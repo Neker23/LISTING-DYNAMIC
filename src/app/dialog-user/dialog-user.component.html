@@ -4,7 +4,7 @@
   <h4 class="title">New User Data</h4>
 
   <mat-form-field>
-    <mat-label>User Name</mat-label>
+    <mat-label>Full Name</mat-label>
     <input matInput type="text" [formControl]="myUserForm.controls.username" />
   </mat-form-field>
 
@@ -35,7 +35,7 @@
 
   <mat-form-field>
     <mat-label>Time</mat-label>
-    <input matInput type="text" [formControl]="myUserForm.controls.time" placeholder="10:00:00" />
+    <input matInput type="time" [formControl]="myUserForm.controls.time" placeholder="10:00:00" />
   </mat-form-field>
 
   <!-- <mat-form-field>
