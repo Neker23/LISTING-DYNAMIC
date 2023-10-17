@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
+import {UserData, UserCredential} from '../timeline-listing/timeline-listing.interface'
 import {
   FormBuilder,
   FormGroup,
@@ -10,17 +11,15 @@ import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-dialog-body',
-  templateUrl: './dialog-body.component.html',
-  styleUrls: ['./dialog-body.component.scss'],
+  templateUrl: './dialog-item.component.html',
+  styleUrls: ['./dialog-item.component.scss'],
 })
 export class DialogBodyComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<DialogBodyComponent>) {}
 
   ngOnInit(): void {
-    console.log(this.myForm);
     this.myForm.valid;
     this.myForm.controls.typeItem.valueChanges.subscribe((value)=>{
-      console.log('cambio el type', value)
     })
 
   }
@@ -65,7 +64,8 @@ export class DialogBodyComponent implements OnInit {
     switch (this.myForm.controls.typeItem.value) {
       case 'document':
         let document = {
-          data: {
+          data : {
+            credentialID: "",
             type: 'document',
             title: 'Credencials/Identity document',
             documentType:
@@ -83,6 +83,7 @@ export class DialogBodyComponent implements OnInit {
       case 'phone':
         let phone = {
           data: {
+            credentialID: "",
             type: 'phone',
             title: 'Credencials/Phone',
             phoneNumber: this.myForm.controls.phone.controls.phoneNumber.value,
@@ -94,6 +95,7 @@ export class DialogBodyComponent implements OnInit {
       case 'address':
         let address = {
           data: {
+            credentialID: "",
             type: 'address',
             title: 'Credencials/Address',
             address: this.myForm.controls.address.controls.address.value,
@@ -107,6 +109,7 @@ export class DialogBodyComponent implements OnInit {
       case 'change':
         let change = {
           data: {
+            credentialID: "",
             type: 'change',
             title:
               'Credencials/Personal information/Basic info/' +

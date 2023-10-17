@@ -11,6 +11,7 @@
   
   .card{
     display: flex;
+    position: relative;
     box-sizing: border-box;
     height: 86px;
     width: 1088px;
@@ -25,6 +26,16 @@
   }
 
   .card__button-more{
+    position: relative;
+    top: 20px;
+  }
+
+  .mat--button{
+    font-size: 17px;
+    color: rgba(27, 35, 88, 0.6);
+  }
+
+  .card__icon-more{
     font-size: 17px;
     color: rgba(27, 35, 88, 0.6);
   }
@@ -138,8 +149,9 @@
     top: 17px;
   }
   
-  .info__localitation{
+  .credencials__box{
     display: flex;
+    position: relative;
     align-items: center;
     margin-top: 11px;
     column-gap: 13px;
@@ -149,10 +161,15 @@
     cursor: pointer;
   }
 
-  .info__localitation:hover {
+  .credencials__box:hover {
     background-color: rgba(0,162,255,0.16); /* Cambia el color de fondo al pasar el ratón sobre el elemento */
   }
   
+  .box__button{
+    position: absolute;
+    right: 0px; 
+    color: rgba(27, 35, 88, 0.6);
+  }
   
   .info__address{
     display: flex;
@@ -206,7 +223,7 @@
   
   .verified-logo{
     position: absolute;
-    top: 78px;
+    top: 22px;
     left: 400px;
     background-color: #EFFBE7;
     font-size: 12px;

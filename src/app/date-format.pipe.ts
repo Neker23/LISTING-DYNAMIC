@@ -10,13 +10,6 @@ export class DateFormatPipe implements PipeTransform {
     const datePipe = new DatePipe('en-US');
     const currentDate = new Date();
     const inputDate = new Date(value);
-    console.log(
-      {value,
-        currentDate,
-        inputDate,
-        currentDatelog: currentDate.getDate(),
-        inputDatelog: inputDate.getDate()}
-    );
 
     if (
       currentDate.getUTCFullYear() === inputDate.getUTCFullYear() &&

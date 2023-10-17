@@ -13,6 +13,7 @@ const TIMELINE_DATA: UserData[] = [
     time: '10:00:00',
     credential: [
       {
+        credentialID: '1',
         type: 'address',
         title: 'Credencials/Address',
         address: 'Provence-Alpes-Côte dAzur',
@@ -44,7 +45,8 @@ const TIMELINE_DATA: UserData[] = [
     date: '2021-08-14',
     time: '07:20:00',
     credential: [
-      {
+      { 
+        credentialID: '1',
         type: 'document',
         title: 'Credencials/Identity document',
         documentType: 'Goverment-issued ID',
@@ -64,13 +66,15 @@ const TIMELINE_DATA: UserData[] = [
     date: '2023-10-04',
     time: '03:12:11',
     credential: [
-      {
+      { 
+        credentialID: '1',
         type: 'change',
         title: 'Credencials/Personal information/Basic info/Full name',
         before: 'Julian Romero',
         after: 'Julian Romero',
       },
-      {
+      { 
+        credentialID: '2',
         type: 'change',
         title: 'Credencials/Personal information/Basic info/First name',
         before: 'Julian',
@@ -90,6 +94,7 @@ const TIMELINE_DATA: UserData[] = [
     time: '22:20:22',
     credential: [
       {
+        credentialID: '1',
         type: 'document',
         title: 'Credencials/Identity document',
         documentType: 'Social security',
@@ -110,6 +115,7 @@ const TIMELINE_DATA: UserData[] = [
     time: '05:11:59',
     credential: [
       {
+        credentialID: '1',
         type: 'phone',
         title: 'Credencials/Phone',
         phoneNumber: '+1 303-999-999901',

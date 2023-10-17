@@ -6,9 +6,12 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CustomerTimelineComponent } from './customer-timeline/customer-timeline.component';
 import { TimelineListingComponent } from './timeline-listing/timeline-listing.component';
-import { DialogBodyComponent } from './dialog-body/dialog-body.component';
+import { DialogBodyComponent } from './dialog-body/dialog-item.component';
 import { DateFormatPipe } from './date-format.pipe';
+import { DialogUserComponent } from './dialog-user/dialog-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DialogComfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { ActualizarServicio } from './actualizar.service';
 
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
@@ -21,6 +24,7 @@ import {MatDialogModule} from '@angular/material/dialog';
 import {MatSelectModule} from '@angular/material/select';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     CustomerTimelineComponent,
     TimelineListingComponent,
     DialogBodyComponent,
-    DateFormatPipe
+    DialogUserComponent,
+    DateFormatPipe,
+    DialogComfirmComponent
   ],
   imports: [
     MatMenuModule,
@@ -45,9 +51,10 @@ import {MatSlideToggleModule} from '@angular/material/slide-toggle';
     MatDialogModule,
     MatSelectModule,
     ReactiveFormsModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    ToastrModule.forRoot(),
   ],
-  providers: [],
+  providers: [ActualizarServicio],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

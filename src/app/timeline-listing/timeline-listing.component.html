@@ -1,4 +1,4 @@
-<ng-container *ngIf="showItems">
+<ng-container>
   <article *ngFor="let groupDate of dateMap">
     <h3 class="time">{{ groupDate.date | dateFormat }}</h3>
 
@@ -8,12 +8,6 @@
         <div class="card__column">
           <div class="card__usuario">
             <h4>{{ card.username }}, log ID:</h4>
-            <button [matMenuTriggerFor]="menu" mat-icon-button>
-              <mat-icon class="card__button-more">more_vert</mat-icon>
-            </button>
-            <mat-menu #menu="matMenu">
-              <button (click)="openDialog2(card.id)" mat-menu-item><mat-icon>add</mat-icon> Add</button>
-            </mat-menu>
           </div>
           <div class="id-card">
             <span [id]="card.id" class="id-card__number">{{ card.id }}</span>
@@ -36,6 +30,13 @@
             <div class="schedule__place">{{ card.localization }}</div>
           </div>
         </div>
+        <button class="card__button-more" [matMenuTriggerFor]="menu" mat-icon-button>
+          <mat-icon class="card__icon-more">more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button class="mat--button" (click)="openDialog2(card.id)" mat-menu-item><mat-icon>add</mat-icon> Add</button>
+          <button class="mat--button" (click)="onDeleteCard(card.id)" mat-menu-item><mat-icon >delete</mat-icon>Delete</button>
+        </mat-menu>
       </div>
 
       <ng-container *ngFor="let credentials of card.credential">
@@ -43,16 +44,17 @@
           <ng-container *ngSwitchCase="'change'">
             <div class="credencials">
               <div class="rectangle"></div>
-              <span class="credencials__radio-icon material-symbols-outlined"
-                >radio_button_checked</span
-              >
+              <span class="credencials__radio-icon material-symbols-outlined">radio_button_checked</span>
               <div class="credencials__info">
                 <h3 class="info__title">{{ credentials.title }}</h3>
-                <div class="info__localitation">
+                <div class="credencials__box">
                   <div class="info__address">
                     <span class="span-tachado">{{ credentials.before }}</span>
                     <span>{{ credentials.after }}</span>
                   </div>
+                  <button (click)="onDeleteCredential(card.id, credentials.credentialID)" class="box__button" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon>delete</mat-icon>
+                  </button>
                 </div>
               </div>
             </div>
@@ -66,20 +68,13 @@
               >
               <div class="credencials__info">
                 <h3 class="info__title">{{ credentials.title }}</h3>
-                <div class="info__localitation">
+                <div class="credencials__box">
                   <span class="info__star material-icons-sharp">star</span>
-                  <span class="info__place-icon material-icons-sharp"
-                    >badge</span
-                  >
+                  <span class="info__place-icon material-icons-sharp">badge</span>
                   <div class="info__address">
-                    <span
-                      ><span
-                        [ngClass]="'fi fi-' + card.flag"
-                        img
-                        class="schedule__flag--inline"
-                      ></span>
-                      {{ credentials.documentType }}</span
-                    >
+                    <span><span [ngClass]="'fi fi-' + card.flag" img class="schedule__flag--inline"></span>
+                      {{ credentials.documentType }}
+                    </span>
                     <span class="verify-id">{{
                       credentials.documentNumber
                     }}</span>
@@ -87,6 +82,9 @@
                       Verified
                     </div>
                   </div>
+                  <button (click)="onDeleteCredential(card.id, credentials.credentialID)" class="box__button" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon>delete</mat-icon>
+                  </button>
                 </div>
               </div>
             </div>
@@ -100,7 +98,7 @@
               >
               <div class="credencials__info">
                 <h3 class="info__title">{{ credentials.title }}</h3>
-                <div class="info__localitation">
+                <div class="credencials__box">
                   <span class="info__star material-icons-sharp">star</span>
                   <span class="info__place-icon material-icons-sharp"
                     >phone</span
@@ -115,6 +113,9 @@
                       {{ credentials.phoneNumber }}</span
                     >
                   </div>
+                  <button (click)="onDeleteCredential(card.id, credentials.credentialID)" class="box__button" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon>delete</mat-icon>
+                  </button>
                 </div>
               </div>
             </div>
@@ -128,7 +129,7 @@
               >
               <div class="credencials__info">
                 <h3 class="info__title">{{ credentials.title }}</h3>
-                <div class="info__localitation">
+                <div class="credencials__box">
                   <span class="info__star material-icons-sharp">star</span>
                   <span class="info__place-icon material-icons-sharp"
                     >location_on</span
@@ -139,6 +140,9 @@
                       >{{ credentials.state }} - {{ credentials.country }}</span
                     >
                   </div>
+                  <button (click)="onDeleteCredential(card.id, credentials.credentialID)" class="box__button" mat-icon-button aria-label="Example icon button with a vertical three dot icon">
+                    <mat-icon>delete</mat-icon>
+                  </button>
                 </div>
               </div>
             </div>

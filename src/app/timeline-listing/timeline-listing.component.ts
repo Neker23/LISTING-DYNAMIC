@@ -2,7 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { TIMELINE_DATA } from './timeline-listing.data';
 import { DatePerUser } from './timeline-listing.interface';
 import { MatDialog } from '@angular/material/dialog';
-import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
+import { DialogBodyComponent } from '../dialog-body/dialog-item.component';
+import { ActualizarServicio } from '../actualizar.service';
+import { ToastrService } from 'ngx-toastr';
+import { DialogComfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 
 @Component({
   selector: 'app-timeline-listing',
@@ -10,16 +13,29 @@ import { DialogBodyComponent } from '../dialog-body/dialog-body.component';
   styleUrls: ['./timeline-listing.component.scss'],
 })
 export class TimelineListingComponent implements OnInit {
-  private _data = TIMELINE_DATA;
-  dateMap: DatePerUser[] = [];
-  showItems = false;
+  constructor(
+    private matDialog: MatDialog,
+    private miServicio: ActualizarServicio,
+    private toastr: ToastrService
+  ) {}
 
-  constructor(private matDialog: MatDialog) {}
+  infopadre = '';
+
+  private _data = TIMELINE_DATA;
+
+  dateMap: DatePerUser[] = [];
+
+  showItems = false;
 
   ngOnInit(): void {
     this.onOrder();
     this.onSeparete();
-    this.onRender();
+    //suscripción para que este atento a escuchar el evento
+    this.miServicio.obtenerEvento().subscribe((data) => {
+      this.infopadre = data;
+      this.onOrder();
+      this.onSeparete();
+    });
   }
 
   onOrder() {
@@ -28,10 +44,10 @@ export class TimelineListingComponent implements OnInit {
       const dateB = new Date(b.date);
       return dateB.getTime() - dateA.getTime();
     });
-    console.log(this._data);
   }
 
   onSeparete() {
+    this.dateMap = [];
     this._data.forEach((dataElement) => {
       // index = this.dateMap.findIndex(
       //   (mapElement) => dataElement.date == mapElement['date']
@@ -45,12 +61,6 @@ export class TimelineListingComponent implements OnInit {
         this.dateMap.push({ date: dataElement.date, data: [dataElement] });
       }
     });
-
-    console.log(this.dateMap);
-  }
-
-  onRender() {
-    this.showItems = !this.showItems;
   }
 
   onCopy(id) {
@@ -62,13 +72,53 @@ export class TimelineListingComponent implements OnInit {
     window.getSelection().removeAllRanges(); // Limpiar selecciones anteriores
     window.getSelection().addRange(rango);
     // Intentar copiar el texto al portapapeles
-      document.execCommand('copy');
+    document.execCommand('copy');
     // Limpiar la selección
     window.getSelection().removeAllRanges();
+    this.toastr.success('Success', 'ID Copied');
   }
 
-  openDialog2(card_id){
-    console.log('dialog 2 funcionando')
+  onDeleteCard(card_id) {
+    const dialogRef = this.matDialog.open(DialogComfirmComponent, {
+      width: '450px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Aquí puedes acceder a la información devuelta por el diálogo
+      console.log(result);
+      if (result.confirm) {
+        const cardIndex = TIMELINE_DATA.findIndex(
+          (element) => element.id == card_id
+        );
+        TIMELINE_DATA.splice(cardIndex, 1);
+        // Actializamos el render de los cards
+        this.onOrder();
+        this.onSeparete();
+        this.toastr.success('Success', 'Card Deleted');
+      }
+    });
+  }
+
+  onDeleteCredential(card_id, credentialID) {
+    const dialogRef = this.matDialog.open(DialogComfirmComponent, {
+      width: '450px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Aquí puedes acceder a la información devuelta por el diálogo
+      console.log(result);
+      if (result.confirm) {
+        const card = TIMELINE_DATA.find((element) => element.id == card_id);
+        const credentialIndex = card.credential.findIndex(
+          (element) => element.credentialID == credentialID
+        );
+        card.credential.splice(credentialIndex, 1);
+        this.toastr.success('Success', 'Credential Deleted');
+      }
+    });
+  }
+
+  openDialog2(card_id) {
     const dialogRef = this.matDialog.open(DialogBodyComponent, {
       width: '450px',
     });
@@ -76,10 +126,13 @@ export class TimelineListingComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       // Aquí puedes acceder a la información devuelta por el diálogo
       if (result) {
-        const item = TIMELINE_DATA.find((element) => element.id == card_id);
-        item.credential.push(result.data);
+        const card = TIMELINE_DATA.find((element) => element.id == card_id);
+        const credentialID = (card.credential.length + 1).toString();
+        // añado un id para el nuevo credential
+        result.data.credentialID = credentialID;
+        card.credential.push(result.data);
+        this.toastr.success('Success', 'Item Added');
       }
     });
   }
-  
 }

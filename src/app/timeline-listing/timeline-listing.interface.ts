@@ -11,7 +11,8 @@ export interface UserData {
     credential: UserCredential[];
 }
 
-interface UserCredential {
+export interface UserCredential {
+    credentialID:    string;
     type:            string;
     title:           string;
     address?:        string;
