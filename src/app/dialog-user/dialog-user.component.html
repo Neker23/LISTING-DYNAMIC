@@ -9,23 +9,33 @@
   </mat-form-field>
 
   <mat-form-field>
-    <mat-label>Localization</mat-label>
-    <input matInput type="text" [formControl]="myUserForm.controls.localization" placeholder="Ejem: US, Chicago" />
+    <mat-label>Country</mat-label>
+    <mat-select [formControl]="myUserForm.controls.country">
+      <mat-option *ngFor="let country of countryData" [value]="country.abrev">{{country.name}}</mat-option>
+    </mat-select>
   </mat-form-field>
 
   <mat-form-field>
+    <mat-label>City</mat-label>
+    <input matInput type="text" [formControl]="myUserForm.controls.city" placeholder="City" />
+  </mat-form-field>
+
+  <!-- <mat-form-field>
     <mat-label>Date</mat-label>
     <input matInput type="text" [formControl]="myUserForm.controls.date" placeholder="yyyy-mm-dd" />
+  </mat-form-field> -->
+
+  <mat-form-field>
+    <mat-label>Date</mat-label>
+    <input matInput [formControl]="myUserForm.controls.date" [matDatepicker]="picker">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Time</mat-label>
     <input matInput type="text" [formControl]="myUserForm.controls.time" placeholder="10:00:00" />
-  </mat-form-field>
-
-  <mat-form-field>
-    <mat-label>Flag</mat-label>
-    <input matInput type="text" [formControl]="myUserForm.controls.flag" placeholder="Ejem: us" />
   </mat-form-field>
 
   <!-- <mat-form-field>
@@ -39,6 +49,7 @@
       <mat-option *ngFor="let device of devices" [value]="device.id">{{device.nombre}}</mat-option>
     </mat-select>
   </mat-form-field>
+
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">

@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { ActualizarServicio } from './actualizar.service';
 
+
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
@@ -25,7 +26,8 @@ import {MatSelectModule} from '@angular/material/select';
 import {ReactiveFormsModule} from '@angular/forms';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import { ToastrModule } from 'ngx-toastr';
-
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import { ToastrModule } from 'ngx-toastr';
     ReactiveFormsModule,
     MatSlideToggleModule,
     ToastrModule.forRoot(),
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [ActualizarServicio],
   bootstrap: [AppComponent]
