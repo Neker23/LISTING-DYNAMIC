@@ -18,7 +18,8 @@ export class CustomerTimelineComponent {
     private toastr: ToastrService
   ) {}
 
-  openDialogItem() {
+  openDialogUser() {
+    
     const dialogRef = this.matDialog.open(DialogUserComponent, {
       width: '450px',
     });

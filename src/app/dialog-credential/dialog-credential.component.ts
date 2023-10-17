@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import {UserData, UserCredential} from '../timeline-listing/timeline-listing.interface'
 import {
-  FormBuilder,
   FormGroup,
   FormControl,
   Validators,
@@ -11,11 +10,11 @@ import { MatSelectChange } from '@angular/material/select';
 
 @Component({
   selector: 'app-dialog-body',
-  templateUrl: './dialog-item.component.html',
-  styleUrls: ['./dialog-item.component.scss'],
+  templateUrl: './dialog-credential.component.html',
+  styleUrls: ['./dialog-credential.component.scss'],
 })
-export class DialogBodyComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<DialogBodyComponent>) {}
+export class DialogCredentialComponent implements OnInit {
+  constructor(public dialogRef: MatDialogRef<DialogCredentialComponent>) {}
 
   ngOnInit(): void {
     this.myForm.valid;

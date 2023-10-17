@@ -1,11 +1,15 @@
 import { Component, OnInit } from '@angular/core';
+
 import { TIMELINE_DATA } from './timeline-listing.data';
 import { DatePerUser } from './timeline-listing.interface';
+
 import { MatDialog } from '@angular/material/dialog';
-import { DialogBodyComponent } from '../dialog-body/dialog-item.component';
+import { DialogCredentialComponent } from '../dialog-credential/dialog-credential.component';
+import { DialogComfirmComponent } from '../dialog-confirm/dialog-confirm.component';
+
 import { ActualizarServicio } from '../actualizar.service';
 import { ToastrService } from 'ngx-toastr';
-import { DialogComfirmComponent } from '../dialog-confirm/dialog-confirm.component';
+
 
 @Component({
   selector: 'app-timeline-listing',
@@ -13,13 +17,12 @@ import { DialogComfirmComponent } from '../dialog-confirm/dialog-confirm.compone
   styleUrls: ['./timeline-listing.component.scss'],
 })
 export class TimelineListingComponent implements OnInit {
+
   constructor(
     private matDialog: MatDialog,
     private miServicio: ActualizarServicio,
     private toastr: ToastrService
   ) {}
-
-  infopadre = '';
 
   private _data = TIMELINE_DATA;
 
@@ -27,12 +30,12 @@ export class TimelineListingComponent implements OnInit {
 
   showItems = false;
 
+
   ngOnInit(): void {
     this.onOrder();
     this.onSeparete();
     //suscripción para que este atento a escuchar el evento
     this.miServicio.obtenerEvento().subscribe((data) => {
-      this.infopadre = data;
       this.onOrder();
       this.onSeparete();
     });
@@ -78,6 +81,24 @@ export class TimelineListingComponent implements OnInit {
     this.toastr.success('Success', 'ID Copied');
   }
 
+  openDialogCredential(card_id) {
+    const dialogRef = this.matDialog.open(DialogCredentialComponent, {
+      width: '450px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Aquí puedes acceder a la información devuelta por el diálogo
+      if (result) {
+        const card = TIMELINE_DATA.find((element) => element.id == card_id);
+        const credentialID = (card.credential.length + 1).toString();
+        // añado un id para el nuevo credential
+        result.data.credentialID = credentialID;
+        card.credential.push(result.data);
+        this.toastr.success('Success', 'Credential Added');
+      }
+    });
+  }
+
   onDeleteCard(card_id) {
     const dialogRef = this.matDialog.open(DialogComfirmComponent, {
       width: '450px',
@@ -114,24 +135,6 @@ export class TimelineListingComponent implements OnInit {
         );
         card.credential.splice(credentialIndex, 1);
         this.toastr.success('Success', 'Credential Deleted');
-      }
-    });
-  }
-
-  openDialog2(card_id) {
-    const dialogRef = this.matDialog.open(DialogBodyComponent, {
-      width: '450px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      // Aquí puedes acceder a la información devuelta por el diálogo
-      if (result) {
-        const card = TIMELINE_DATA.find((element) => element.id == card_id);
-        const credentialID = (card.credential.length + 1).toString();
-        // añado un id para el nuevo credential
-        result.data.credentialID = credentialID;
-        card.credential.push(result.data);
-        this.toastr.success('Success', 'Item Added');
       }
     });
   }

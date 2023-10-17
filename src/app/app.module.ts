@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
 import { CustomerTimelineComponent } from './customer-timeline/customer-timeline.component';
 import { TimelineListingComponent } from './timeline-listing/timeline-listing.component';
-import { DialogBodyComponent } from './dialog-body/dialog-item.component';
+import { DialogCredentialComponent } from './dialog-credential/dialog-credential.component';
 import { DateFormatPipe } from './date-format.pipe';
 import { DialogUserComponent } from './dialog-user/dialog-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -33,7 +33,7 @@ import { ToastrModule } from 'ngx-toastr';
     SidebarComponent,
     CustomerTimelineComponent,
     TimelineListingComponent,
-    DialogBodyComponent,
+    DialogCredentialComponent,
     DialogUserComponent,
     DateFormatPipe,
     DialogComfirmComponent
