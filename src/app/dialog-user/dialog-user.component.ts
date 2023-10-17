@@ -34,7 +34,7 @@ export class DialogUserComponent implements OnInit {
 
   myUserForm = new FormGroup({
     username: new FormControl('', Validators.required),
-    photoURL: new FormControl('', Validators.required),
+    photoURL: new FormControl('https://picsum.photos/200/300'),
     flag: new FormControl('', Validators.required),
     device: new FormControl('', Validators.required),
     localization: new FormControl('', Validators.required),
@@ -46,6 +46,7 @@ export class DialogUserComponent implements OnInit {
 
 
   onSubmit() {
+
 
     const uuid = this.generateUUID();
 
