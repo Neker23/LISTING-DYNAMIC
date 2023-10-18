@@ -1,33 +1,42 @@
-
 <mat-dialog-content>
-
   <h4 class="title">New User Data</h4>
 
   <mat-form-field>
     <mat-label>User Name</mat-label>
-    <input matInput type="text" [formControl]="myUserForm.controls.username" />
+    <input matInput type="text" [formControl]="userForm.controls.username" />
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>Country</mat-label>
-    <mat-select [formControl]="myUserForm.controls.country">
-      <mat-option *ngFor="let country of countryData" [value]="country.abrev">{{country.name}}</mat-option>
+    <mat-select [formControl]="userForm.controls.country">
+      <mat-option *ngFor="let country of countryData" [value]="country.abrev">{{
+        country.name
+      }}</mat-option>
     </mat-select>
   </mat-form-field>
 
   <mat-form-field>
     <mat-label>City</mat-label>
-    <input matInput type="text" [formControl]="myUserForm.controls.city" placeholder="City" />
+    <input
+      matInput
+      type="text"
+      [formControl]="userForm.controls.city"
+      placeholder="City"
+    />
   </mat-form-field>
 
   <!-- <mat-form-field>
     <mat-label>Date</mat-label>
-    <input matInput type="text" [formControl]="myUserForm.controls.date" placeholder="yyyy-mm-dd" />
+    <input matInput type="text" [formControl]="userForm.controls.date" placeholder="yyyy-mm-dd" />
   </mat-form-field> -->
 
   <mat-form-field>
     <mat-label>Date</mat-label>
-    <input matInput [formControl]="myUserForm.controls.date" [matDatepicker]="picker">
+    <input
+      matInput
+      [formControl]="userForm.controls.date"
+      [matDatepicker]="picker"
+    />
     <mat-hint>MM/DD/YYYY</mat-hint>
     <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -35,24 +44,37 @@
 
   <mat-form-field>
     <mat-label>Time</mat-label>
-    <input matInput type="text" [formControl]="myUserForm.controls.time" placeholder="10:00:00" />
+    <input
+      matInput
+      type="text"
+      [formControl]="userForm.controls.time"
+      placeholder="10:00:00"
+    />
   </mat-form-field>
 
   <!-- <mat-form-field>
     <mat-label>photoURL</mat-label>
-    <input matInput type="text" [formControl]="myUserForm.controls.photoURL" placeholder="URL" />
+    <input matInput type="text" [formControl]="userForm.controls.photoURL" placeholder="URL" />
   </mat-form-field> -->
 
   <mat-form-field>
     <mat-label>Device</mat-label>
-    <mat-select [formControl]="myUserForm.controls.device">
-      <mat-option *ngFor="let device of devices" [value]="device.id">{{device.nombre}}</mat-option>
+    <mat-select [formControl]="userForm.controls.device">
+      <mat-option *ngFor="let device of devices" [value]="device.id">{{
+        device.nombre
+      }}</mat-option>
     </mat-select>
   </mat-form-field>
-
 </mat-dialog-content>
 
 <mat-dialog-actions align="end">
-  <button mat-raised-button color="primary" [disabled]="!myUserForm.valid" (click)="onSubmit()">Save</button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="!userForm.valid"
+    (click)="onSubmit()"
+  >
+    Save
+  </button>
   <button mat-raised-button matDialogClose color="warn">Cancel</button>
 </mat-dialog-actions>
