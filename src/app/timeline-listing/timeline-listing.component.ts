@@ -59,7 +59,7 @@ export class TimelineListingComponent implements OnInit {
     });
   }
 
-  openDialogCredential(card_id) {
+  openDialogCredential(card_id: string) {
     const dialogRef = this.matDialog.open(DialogCredentialComponent, {
       width: '450px',
     });

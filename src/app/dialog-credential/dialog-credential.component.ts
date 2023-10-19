@@ -6,7 +6,8 @@ import {
   Validators,
   FormBuilder,
 } from '@angular/forms';
-import { CHANGE, DOCUMENTS_TYPE, TYPE_DEVICES } from './dialog-user.data';
+import { NAME_CHANGES, DOCUMENTS_TYPE, TYPE_DEVICES } from './dialog-user.data';
+import { CredentialType } from '../core/enums/credential-type.enum';
 
 @Component({
   selector: 'app-dialog-body',
@@ -16,12 +17,14 @@ import { CHANGE, DOCUMENTS_TYPE, TYPE_DEVICES } from './dialog-user.data';
 export class DialogCredentialComponent implements OnInit {
   documents = DOCUMENTS_TYPE;
   typeItems = TYPE_DEVICES;
-  changeType = CHANGE;
+  nameChanges = NAME_CHANGES;
+  credencialDocumentKey = CredentialType.Document;
+  credencialKeys = CredentialType;
 
   credentialForm = this.formBuilder.group({
-    typeItem: new FormControl('', Validators.required),
-    document: new FormGroup({
-      documentType: new FormControl(''),
+    typeItem: ['', Validators.required],
+    document: this.formBuilder.group({
+      documentType: [''],
       documentNumber: new FormControl(''),
       verified: new FormControl(true),
     }),
@@ -45,74 +48,66 @@ export class DialogCredentialComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {}
 
-  ngOnInit(): void {
-    this.credentialForm.valid;
-    this.credentialForm.controls.typeItem.valueChanges.subscribe((value) => {});
-  }
+  ngOnInit(): void {}
 
   onSubmit() {
     const credentialForm = this.credentialForm.controls;
+
     switch (credentialForm.typeItem.value) {
-      case 'document':
-        let document = {
+      case CredentialType.Document:
+        const documentControl = credentialForm.document.controls;
+        const document = {
           data: {
             credentialID: '',
-            type: 'document',
+            type: CredentialType.Document,
             title: 'Credencials/Identity document',
             documentType:
-              this.documents[
-                credentialForm.document.controls.documentType
-                  .value
-              ].nombre,
-            documentNumber:
-              credentialForm.document.controls.documentNumber
-                .value,
-            verified:
-              credentialForm.document.controls.verified.value,
+              this.documents[documentControl.documentType.value].nombre,
+            documentNumber: documentControl.documentNumber.value,
+            verified: documentControl.verified.value,
           },
         };
         this.dialogRef.close(document);
         break;
 
       case 'phone':
-        let phone = {
+        const phone = {
           data: {
             credentialID: '',
             type: 'phone',
             title: 'Credencials/Phone',
-            phoneNumber:
-              credentialForm.phone.controls.phoneNumber.value,
+            phoneNumber: credentialForm.phone.controls.phoneNumber.value,
           },
         };
         this.dialogRef.close(phone);
         break;
 
       case 'address':
-        let address = {
+        const addressControl = credentialForm.address.controls;
+        const address = {
           data: {
             credentialID: '',
             type: 'address',
             title: 'Credencials/Address',
-            address:
-              credentialForm.address.controls.address.value,
-            state: credentialForm.address.controls.state.value,
-            country:
-              credentialForm.address.controls.country.value,
+            address: addressControl.address.value,
+            state: addressControl.state.value,
+            country: addressControl.country.value,
           },
         };
         this.dialogRef.close(address);
         break;
 
       case 'change':
-        let change = {
+        const changeControl = credentialForm.change.controls;
+        const change = {
           data: {
             credentialID: '',
             type: 'change',
             title:
               'Credencials/Personal information/Basic info/' +
-              credentialForm.change.controls.title.value,
-            before: credentialForm.change.controls.before.value,
-            after: credentialForm.change.controls.after.value,
+              changeControl.title.value,
+            before: changeControl.before.value,
+            after: changeControl.after.value,
           },
         };
         this.dialogRef.close(change);

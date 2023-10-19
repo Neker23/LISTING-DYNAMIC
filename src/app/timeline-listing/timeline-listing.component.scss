@@ -1,241 +1,242 @@
-.time{
-    color: rgba(27,35,88,0.87);
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.15px;
-    line-height: 24px;
-    margin-left: 80px;
-    margin-top: 28px;
-    margin-bottom: 20px;
-  }
-  
-  .card{
-    display: flex;
-    position: relative;
-    box-sizing: border-box;
-    height: 86px;
-    width: 1088px;
-    border: 1px solid #B9C3D5;
-    border-radius: 4px;
-    margin-left: 80px;
-  }
+.time {
+  color: rgba(27, 35, 88, 0.87);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.15px;
+  line-height: 24px;
+  margin-left: 80px;
+  margin-top: 28px;
+  margin-bottom: 20px;
+}
 
-  .card__usuario{
-    display: flex;
-    height: 33px;
-  }
+.card {
+  display: flex;
+  position: relative;
+  box-sizing: border-box;
+  height: 86px;
+  width: 1088px;
+  border: 1px solid #b9c3d5;
+  border-radius: 4px;
+  margin-left: 80px;
+}
 
-  .card__button-more{
-    position: relative;
-    top: 20px;
-  }
+.card__usuario {
+  display: flex;
+  height: 33px;
+}
 
-  .mat--button{
-    font-size: 17px;
-    color: rgba(27, 35, 88, 0.6);
-  }
+.card__button-more {
+  position: relative;
+  top: 20px;
+}
 
-  .card__icon-more{
-    font-size: 17px;
-    color: rgba(27, 35, 88, 0.6);
-  }
-  
-  .card__img{
-    box-sizing: border-box;
-    height: 34px;
-    width: 34px;
-    border: 2px solid #E1F2FE;
-    border-radius: 4px;
-    margin-top: 15px;
-    margin-left: 16px;
-  }
-  
-  .card h4{
-    height: 24px;
-    width: 976px;
-    color: rgba(27,35,88,0.87);
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 0.1px;
-    line-height: 24px;
-    margin-left: 16px;
-    margin-top: 10px;
-  }
-  
-  .id-card{
-    box-sizing: border-box;
-    height: 22px;
-    width: 256px;
-    border: 1px solid #B9C3D5;
-    border-radius: 4px;
-    margin-left: 16px;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-  
-  .id-card__number{
-    height: 16px;
-    width: 222px;
-    color: rgba(27,35,88,0.87);
-    font-size: 9.8px;
-    letter-spacing: 0.7px;
-    line-height: 16px;
-    font-weight: 400;
-  }
-  
-  .id-card__copy-icon{
-    color: rgba(27,35,88,0.6);
-    font-size: 12px !important;
-    cursor: pointer;
-  }
-  
-  .schedule{
-    height: 16px;
-    width: 330px;
-    color: rgba(27,35,88,0.87);
-    font-size: 12px;
-    display: flex;
-    align-items: center;
-    margin-left: 16px;
-    margin-top: 5px;
-  }
-  
-  .schedule__device{
-    margin-right: 12px;
-  }
-  
-  .schedule__device-icon{
-    font-size: 12px !important;
-    margin-right: 8px;
-  }
-  
-  .schedule__flag{
-    height: 9px;
-    width: 12px;
-    margin-right: 8px;
-    margin-bottom: 1.2px;
-  }
-  
-  .schedule__time{
-    margin-right: 16px;
-  }
-  
-  
-  .credencials{
-    margin-left: 111px;
-    height: 110px;
-    width: 1061.79px;
-    position: relative;
-    display: flex;
-  }
-  
-  .rectangle{
-    height: 110px;
-    width: 1px;
-    opacity: 0.5;
-    background-color: rgba(27,35,88,0.32);
-  }
-  
-  .credencials__info{
-    padding-left: 31px;
-  }
-  
-  .credencials__radio-icon{
-    color: #2979FF;
-    position: absolute;
-    font-size: 16px !important;
-    left: -7px;
-    top: 17px;
-  }
-  
-  .credencials__box{
-    display: flex;
-    position: relative;
-    align-items: center;
-    margin-top: 11px;
-    column-gap: 13px;
-    width: 1021.79px;
-    height: 56px;
-    padding-left: 5px;
-    cursor: pointer;
-  }
+.mat--button {
+  font-size: 17px;
+  color: rgba(27, 35, 88, 0.6);
+}
 
-  .credencials__box:hover {
-    background-color: rgba(0,162,255,0.16); /* Cambia el color de fondo al pasar el ratón sobre el elemento */
-  }
-  
-  .box__button{
-    position: absolute;
-    right: 0px; 
-    color: rgba(27, 35, 88, 0.6);
-  }
-  
-  .info__address{
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .info__title{
-    font-size: 14px;
-    letter-spacing: 0.25px;
-    line-height: 20px;
-    color: rgba(27,35,88,0.87);
-    margin-top: 17.49px;
-    font-weight: 500;
-  }
-  
-  .info__star{
-    color: #00BAD3; 
-  }
-  
-  .info__place-icon{
-    background-color: #EDF0FB;
-    width: 32px;
-    height: 32px;
-    display: flex !important;
-    align-items: center;
-    justify-content: center;
-    color: rgba(27,35,88,0.6);
-    font-size: 15px !important;
-    border-radius: 4px;
-  }
-  
-  .info__star{
-    font-size: 15px !important;
-  }
-  
-  .info__address span {
-    font-size: 12px;
-    font-weight: 400;
-    color: rgba(27,35,88,0.87);
-  }
-  
-  .schedule__flag--inline{
-    width: 14px;
-    height: 10px;
-  }
-  
-  span.verify-id{
-    font-weight: 400;
-    font-size: 12px;
-  }
-  
-  .verified-logo{
-    position: absolute;
-    top: 22px;
-    left: 400px;
-    background-color: #EFFBE7;
-    font-size: 12px;
-    color: #3F9613;
-    font-weight: 500;
-    height: 16px;
-    width: 61px;
-    border-radius: 12px;
-    text-align: center;
-  }
-  
-  .span-tachado{
-    text-decoration: line-through;
-    color: #767B9B !important;
-  }
+.card__icon-more {
+  font-size: 17px;
+  color: rgba(27, 35, 88, 0.6);
+}
+
+.card__img {
+  box-sizing: border-box;
+  height: 34px;
+  width: 34px;
+  border: 2px solid #e1f2fe;
+  border-radius: 4px;
+  margin-top: 15px;
+  margin-left: 16px;
+}
+
+.card h4 {
+  height: 24px;
+  width: 976px;
+  color: rgba(27, 35, 88, 0.87);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.1px;
+  line-height: 24px;
+  margin-left: 16px;
+  margin-top: 10px;
+}
+
+.id-card {
+  box-sizing: border-box;
+  height: 22px;
+  width: 256px;
+  border: 1px solid #b9c3d5;
+  border-radius: 4px;
+  margin-left: 16px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.id-card__number {
+  height: 16px;
+  width: 222px;
+  color: rgba(27, 35, 88, 0.87);
+  font-size: 9.8px;
+  letter-spacing: 0.7px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+.id-card__copy-icon {
+  color: rgba(27, 35, 88, 0.6);
+  font-size: 12px !important;
+  cursor: pointer;
+}
+
+.schedule {
+  height: 16px;
+  width: 330px;
+  color: rgba(27, 35, 88, 0.87);
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  margin-left: 16px;
+  margin-top: 5px;
+}
+
+.schedule__device {
+  margin-right: 12px;
+}
+
+.schedule__device-icon {
+  font-size: 12px !important;
+  margin-right: 8px;
+}
+
+.schedule__flag {
+  height: 9px;
+  width: 12px;
+  margin-right: 8px;
+  margin-bottom: 1.2px;
+}
+
+.schedule__time {
+  margin-right: 16px;
+}
+
+.credencials {
+  margin-left: 111px;
+  height: 110px;
+  width: 1061.79px;
+  position: relative;
+  display: flex;
+}
+
+.rectangle {
+  height: 110px;
+  width: 1px;
+  opacity: 0.5;
+  background-color: rgba(27, 35, 88, 0.32);
+}
+
+.credencials__info {
+  padding-left: 31px;
+}
+
+.credencials__radio-icon {
+  color: #2979ff;
+  position: absolute;
+  font-size: 16px !important;
+  left: -7px;
+  top: 17px;
+}
+
+.credencials__box {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-top: 11px;
+  column-gap: 13px;
+  width: 1021.79px;
+  height: 56px;
+  padding-left: 5px;
+  cursor: pointer;
+}
+
+.credencials__box:hover {
+  background-color: rgba(
+    0,
+    162,
+    255,
+    0.16
+  ); /* Cambia el color de fondo al pasar el ratón sobre el elemento */
+}
+
+.box__button {
+  position: absolute;
+  right: 0px;
+  color: rgba(27, 35, 88, 0.6);
+}
+
+.info__address {
+  display: flex;
+  flex-direction: column;
+}
+
+.info__title {
+  font-size: 14px;
+  letter-spacing: 0.25px;
+  line-height: 20px;
+  color: rgba(27, 35, 88, 0.87);
+  margin-top: 17.49px;
+  font-weight: 500;
+}
+
+.info__star {
+  color: #00bad3;
+  font-size: 15px !important;
+}
+
+.info__place-icon {
+  background-color: #edf0fb;
+  width: 32px;
+  height: 32px;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  color: rgba(27, 35, 88, 0.6);
+  font-size: 15px !important;
+  border-radius: 4px;
+}
+
+.info__address span {
+  font-size: 12px;
+  font-weight: 400;
+  color: rgba(27, 35, 88, 0.87);
+}
+
+.schedule__flag--inline {
+  width: 14px;
+  height: 10px;
+}
+
+span.verify-id {
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.verified-logo {
+  position: absolute;
+  top: 22px;
+  left: 400px;
+  background-color: #effbe7;
+  font-size: 12px;
+  color: #3f9613;
+  font-weight: 500;
+  height: 16px;
+  width: 61px;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.span-tachado {
+  text-decoration: line-through;
+  color: #767b9b !important;
+}
