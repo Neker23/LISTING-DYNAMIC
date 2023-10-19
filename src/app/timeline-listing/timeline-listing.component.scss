@@ -4,9 +4,12 @@
   font-weight: 500;
   letter-spacing: 0.15px;
   line-height: 24px;
-  margin-left: 80px;
   margin-top: 28px;
   margin-bottom: 20px;
+}
+
+.article-user{
+  padding-left: 80px;
 }
 
 .card {
@@ -14,10 +17,14 @@
   position: relative;
   box-sizing: border-box;
   height: 86px;
-  width: 1088px;
+  width: 95%;
   border: 1px solid #b9c3d5;
   border-radius: 4px;
-  margin-left: 80px;
+
+  &usuario{
+    display: flex;
+    height: 33px;
+  }
 }
 
 .card__usuario {
@@ -90,6 +97,10 @@
   cursor: pointer;
 }
 
+.card__column{
+  width: 90%;
+}
+
 .schedule {
   height: 16px;
   width: 330px;
@@ -122,9 +133,9 @@
 }
 
 .credencials {
-  margin-left: 111px;
+  margin-left: 30px;
   height: 110px;
-  width: 1061.79px;
+  width: 91%;
   position: relative;
   display: flex;
 }
@@ -137,6 +148,7 @@
 }
 
 .credencials__info {
+  width: 100%;
   padding-left: 31px;
 }
 
@@ -154,7 +166,7 @@
   align-items: center;
   margin-top: 11px;
   column-gap: 13px;
-  width: 1021.79px;
+  width: 100%;
   height: 56px;
   padding-left: 5px;
   cursor: pointer;

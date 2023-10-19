@@ -13,7 +13,8 @@ body {
 }
 
 .app-root {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 20fr;
   width: 100%;
   min-height: 100vh !important;
 }

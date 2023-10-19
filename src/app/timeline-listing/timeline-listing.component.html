@@ -1,5 +1,5 @@
 <ng-container>
-  <article *ngFor="let groupDate of dateMap">
+  <article class="article-user" *ngFor="let groupDate of dateMap">
     <h3 class="time">{{ groupDate.date | dateFormat }}</h3>
 
     <ng-container *ngFor="let card of groupDate.data">
