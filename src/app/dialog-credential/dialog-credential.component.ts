@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
-import {UserData, UserCredential} from '../timeline-listing/timeline-listing.interface'
 import {
   FormGroup,
   FormControl,
   Validators,
+  FormBuilder,
 } from '@angular/forms';
-import { MatSelectChange } from '@angular/material/select';
+import { CHANGE, DOCUMENTS_TYPE, TYPE_DEVICES } from './dialog-user.data';
 
 @Component({
   selector: 'app-dialog-body',
@@ -14,28 +14,11 @@ import { MatSelectChange } from '@angular/material/select';
   styleUrls: ['./dialog-credential.component.scss'],
 })
 export class DialogCredentialComponent implements OnInit {
-  constructor(public dialogRef: MatDialogRef<DialogCredentialComponent>) {}
+  documents = DOCUMENTS_TYPE;
+  typeItems = TYPE_DEVICES;
+  changeType = CHANGE;
 
-  ngOnInit(): void {
-    this.myForm.valid;
-    this.myForm.controls.typeItem.valueChanges.subscribe((value)=>{
-    })
-
-  }
-
-  typeItems = ['document', 'phone', 'address', 'change'];
-
-  documents = [
-    { id: '0', nombre: 'Goverment-issued ID' },
-    { id: '1', nombre: 'Social security' },
-  ];
-
-  change = [
-    { id: '01', nombre: 'Fist name' },
-    { id: '02', nombre: 'Full name' },
-  ];
-
-  myForm = new FormGroup({
+  credentialForm = this.formBuilder.group({
     typeItem: new FormControl('', Validators.required),
     document: new FormGroup({
       documentType: new FormControl(''),
@@ -57,23 +40,35 @@ export class DialogCredentialComponent implements OnInit {
     }),
   });
 
+  constructor(
+    public dialogRef: MatDialogRef<DialogCredentialComponent>,
+    private formBuilder: FormBuilder
+  ) {}
 
+  ngOnInit(): void {
+    this.credentialForm.valid;
+    this.credentialForm.controls.typeItem.valueChanges.subscribe((value) => {});
+  }
 
   onSubmit() {
-    switch (this.myForm.controls.typeItem.value) {
+    const credentialForm = this.credentialForm.controls;
+    switch (credentialForm.typeItem.value) {
       case 'document':
         let document = {
-          data : {
-            credentialID: "",
+          data: {
+            credentialID: '',
             type: 'document',
             title: 'Credencials/Identity document',
             documentType:
               this.documents[
-                this.myForm.controls.document.controls.documentType.value
+                credentialForm.document.controls.documentType
+                  .value
               ].nombre,
             documentNumber:
-              this.myForm.controls.document.controls.documentNumber.value,
-            verified: this.myForm.controls.document.controls.verified.value,
+              credentialForm.document.controls.documentNumber
+                .value,
+            verified:
+              credentialForm.document.controls.verified.value,
           },
         };
         this.dialogRef.close(document);
@@ -82,10 +77,11 @@ export class DialogCredentialComponent implements OnInit {
       case 'phone':
         let phone = {
           data: {
-            credentialID: "",
+            credentialID: '',
             type: 'phone',
             title: 'Credencials/Phone',
-            phoneNumber: this.myForm.controls.phone.controls.phoneNumber.value,
+            phoneNumber:
+              credentialForm.phone.controls.phoneNumber.value,
           },
         };
         this.dialogRef.close(phone);
@@ -94,12 +90,14 @@ export class DialogCredentialComponent implements OnInit {
       case 'address':
         let address = {
           data: {
-            credentialID: "",
+            credentialID: '',
             type: 'address',
             title: 'Credencials/Address',
-            address: this.myForm.controls.address.controls.address.value,
-            state: this.myForm.controls.address.controls.state.value,
-            country: this.myForm.controls.address.controls.country.value,
+            address:
+              credentialForm.address.controls.address.value,
+            state: credentialForm.address.controls.state.value,
+            country:
+              credentialForm.address.controls.country.value,
           },
         };
         this.dialogRef.close(address);
@@ -108,13 +106,13 @@ export class DialogCredentialComponent implements OnInit {
       case 'change':
         let change = {
           data: {
-            credentialID: "",
+            credentialID: '',
             type: 'change',
             title:
               'Credencials/Personal information/Basic info/' +
-              this.myForm.controls.change.controls.title.value,
-            before: this.myForm.controls.change.controls.before.value,
-            after: this.myForm.controls.change.controls.after.value,
+              credentialForm.change.controls.title.value,
+            before: credentialForm.change.controls.before.value,
+            after: credentialForm.change.controls.after.value,
           },
         };
         this.dialogRef.close(change);
@@ -123,11 +121,5 @@ export class DialogCredentialComponent implements OnInit {
       default:
         alert('No hay nada');
     }
-  };
-
-  onTypeChange(changed: MatSelectChange){
-    console.log('event selection',changed.value)
   }
-
-
 }

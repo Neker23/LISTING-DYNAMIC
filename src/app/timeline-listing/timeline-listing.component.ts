@@ -10,26 +10,22 @@ import { DialogComfirmComponent } from '../dialog-confirm/dialog-confirm.compone
 import { ActualizarServicio } from '../actualizar.service';
 import { ToastrService } from 'ngx-toastr';
 
-
 @Component({
   selector: 'app-timeline-listing',
   templateUrl: './timeline-listing.component.html',
   styleUrls: ['./timeline-listing.component.scss'],
 })
 export class TimelineListingComponent implements OnInit {
+  private _data = TIMELINE_DATA;
+
+  showItems = false;
+  dateMap: DatePerUser[] = [];
 
   constructor(
     private matDialog: MatDialog,
     private miServicio: ActualizarServicio,
     private toastr: ToastrService
   ) {}
-
-  private _data = TIMELINE_DATA;
-
-  dateMap: DatePerUser[] = [];
-
-  showItems = false;
-
 
   ngOnInit(): void {
     this.onOrder();
@@ -41,7 +37,7 @@ export class TimelineListingComponent implements OnInit {
     });
   }
 
-  onOrder() {
+  private onOrder() {
     this._data.sort((a, b) => {
       const dateA = new Date(a.date);
       const dateB = new Date(b.date);
@@ -49,12 +45,9 @@ export class TimelineListingComponent implements OnInit {
     });
   }
 
-  onSeparete() {
+  private onSeparete() {
     this.dateMap = [];
     this._data.forEach((dataElement) => {
-      // index = this.dateMap.findIndex(
-      //   (mapElement) => dataElement.date == mapElement['date']
-      // );
       const item = this.dateMap.find(
         (mapElement) => dataElement.date == mapElement.date
       );
@@ -64,21 +57,6 @@ export class TimelineListingComponent implements OnInit {
         this.dateMap.push({ date: dataElement.date, data: [dataElement] });
       }
     });
-  }
-
-  onCopy(id) {
-    const textoACopiar = document.getElementById(id);
-    // Crear un rango de selección
-    const rango = document.createRange();
-    rango.selectNode(textoACopiar);
-    // Seleccionar el texto en el rango
-    window.getSelection().removeAllRanges(); // Limpiar selecciones anteriores
-    window.getSelection().addRange(rango);
-    // Intentar copiar el texto al portapapeles
-    document.execCommand('copy');
-    // Limpiar la selección
-    window.getSelection().removeAllRanges();
-    this.toastr.success('Success', 'ID Copied');
   }
 
   openDialogCredential(card_id) {
@@ -95,6 +73,25 @@ export class TimelineListingComponent implements OnInit {
         result.data.credentialID = credentialID;
         card.credential.push(result.data);
         this.toastr.success('Success', 'Credential Added');
+      }
+    });
+  }
+
+  onDeleteCredential(card_id, credentialID) {
+    const dialogRef = this.matDialog.open(DialogComfirmComponent, {
+      width: '450px',
+    });
+
+    dialogRef.afterClosed().subscribe((result) => {
+      // Aquí puedes acceder a la información devuelta por el diálogo
+      console.log(result);
+      if (result.confirm) {
+        const card = TIMELINE_DATA.find((element) => element.id == card_id);
+        const credentialIndex = card.credential.findIndex(
+          (element) => element.credentialID == credentialID
+        );
+        card.credential.splice(credentialIndex, 1);
+        this.toastr.success('Success', 'Credential Deleted');
       }
     });
   }
@@ -120,22 +117,19 @@ export class TimelineListingComponent implements OnInit {
     });
   }
 
-  onDeleteCredential(card_id, credentialID) {
-    const dialogRef = this.matDialog.open(DialogComfirmComponent, {
-      width: '450px',
-    });
-
-    dialogRef.afterClosed().subscribe((result) => {
-      // Aquí puedes acceder a la información devuelta por el diálogo
-      console.log(result);
-      if (result.confirm) {
-        const card = TIMELINE_DATA.find((element) => element.id == card_id);
-        const credentialIndex = card.credential.findIndex(
-          (element) => element.credentialID == credentialID
-        );
-        card.credential.splice(credentialIndex, 1);
-        this.toastr.success('Success', 'Credential Deleted');
-      }
-    });
+  onCopy(id) {
+    const textoACopiar = document.getElementById(id);
+    // Crear un rango de selección
+    const rango = document.createRange();
+    rango.selectNode(textoACopiar);
+    // Seleccionar el texto en el rango
+    window.getSelection().removeAllRanges(); // Limpiar selecciones anteriores
+    window.getSelection().addRange(rango);
+    // Intentar copiar el texto al portapapeles
+    document.execCommand('copy');
+    // Limpiar la selección
+    window.getSelection().removeAllRanges();
+    this.toastr.success('Success', 'ID Copied');
   }
+  
 }

@@ -19,7 +19,6 @@ export class CustomerTimelineComponent {
   ) {}
 
   openDialogUser() {
-    
     const dialogRef = this.matDialog.open(DialogUserComponent, {
       width: '450px',
     });
@@ -31,10 +30,11 @@ export class CustomerTimelineComponent {
           this.toastr.success('Success', 'Credential Added');
         }
         // emite el evento desde el padre
-        this.miServicio.emitirEvento()
+        this.miServicio.emitirEvento();
       } catch (error) {
-        this.toastr.error('Error', "Credential weren't Added")
+        this.toastr.error('Error', "Credential weren't Added");
       }
     });
   }
+  
 }
