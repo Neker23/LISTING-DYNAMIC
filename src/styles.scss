@@ -1,21 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
 
-*{
-    padding: 0;
-    margin: 0;
-  }
-  
-body{
-    background-color:#F6F8FB;
-    display: flex !important; /* Usa flexbox para distribuir elementos en la página */
-    min-height: 100vh !important;
-    font-family: 'Hind Siliguri', sans-serif; 
+* {
+  padding: 0;
+  margin: 0;
 }
 
-.app-root{
+body {
+  background-color: #f6f8fb;
+  display: flex !important; /* Usa flexbox para distribuir elementos en la página */
+  min-height: 100vh !important;
+  font-family: "Hind Siliguri", sans-serif;
+}
+
+.app-root {
   display: flex;
   width: 100%;
   min-height: 100vh !important;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+  height: 100%;
+  overflow: auto;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
