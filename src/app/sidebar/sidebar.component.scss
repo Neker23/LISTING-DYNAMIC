@@ -1,52 +1,97 @@
-aside {
-  background-color: #131b26;
-  width: 64px;
-  z-index: 1;
-  display: flex;
-  flex-direction: column;
-}
+$color-primario: #131b26;
+$color-secondary: white;
 
-.top-icons__logo {
-  border-radius: 50%;
-  margin-top: 12px;
-  margin-left: 13px;
-  margin-bottom: 42.9px;
-  width: 38px;
-  height: 38px;
-}
-
-.aside {
-  &__top {
+@media (min-width: 1000px) {
+  .aside {
+    background-color: $color-primario;
+    width: 64px;
+    z-index: 1;
     display: flex;
     flex-direction: column;
-    width: 100%;
-    margin-bottom: 250px;
   }
-  &__bottom {
+
+  .top-icons__logo {
+    border-radius: 50%;
+    margin-top: 12px;
+    margin-left: 13px;
+    margin-bottom: 42.9px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .aside {
+    &__top {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      margin-bottom: 50px;
+    }
+    &__bottom {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+    &__profile {
+      width: 32px;
+      height: 32px;
+      border-radius: 1px;
+      border: 1px solid $color-secondary;
+      border-radius: 7px;
+      margin-left: 16px;
+    }
+    &__icons {
+      color: $color-secondary;
+      padding-bottom: 16.36px;
+      padding-left: 15.9px;
+      margin-left: 4px;
+      margin-bottom: 32.64px;
+    }
+  }
+}
+
+@media (max-width: 1000px) {
+  /* Estilos CSS que se aplicarán en pantallas con un ancho igual o menor a 1000px */
+  .aside {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    background-color: $color-primario;
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
+    height: 50px;
   }
-}
+  .aside__top {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    margin-left: 7px;
+  }
 
-.aside__profile {
-  width: 32px;
-  height: 32px;
-  border-radius: 1px;
-  border: 1px solid white;
-  border-radius: 7px;
-  margin-left: 16px;
-}
+  .aside__bottom {
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    align-items: center;
+    margin-right: 7px;
+  }
 
-.aside__icons {
-  color: white;
-  padding-bottom: 16.36px;
-  padding-left: 15.9px;
-  margin-left: 4px;
-  margin-bottom: 32.64px;
-}
+  .aside__icons {
+    color: $color-secondary;
+  }
 
-.flag-icon {
-  width: 30px;
-  height: 20px;
+  .aside__profile {
+    width: 32px;
+    height: 32px;
+    border-radius: 1px;
+    border: 1px solid $color-secondary;
+    border-radius: 7px;
+    margin-left: 0px;
+  }
+
+  .top-icons__logo {
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+  }
 }

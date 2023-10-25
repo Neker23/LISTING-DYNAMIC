@@ -10,21 +10,27 @@ body {
   display: flex !important; /* Usa flexbox para distribuir elementos en la página */
   min-height: 100vh !important;
   font-family: "Hind Siliguri", sans-serif;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+html,
+body {
+  height: 100%;
+  overflow: auto;
 }
 
 .app-root {
   display: grid;
   grid-template-columns: 1fr 20fr;
   width: 100%;
-  min-height: 100vh !important;
+  min-height: 100vh;
 }
 
-html,
-body {
-  height: 100%;
-  overflow: auto;
-}
-body {
-  margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+@media (max-width: 1000px) {
+  /* Estilos CSS que se aplicarán en pantallas con un ancho igual o menor a 1000px */
+  .app-root {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh !important;
+  }
 }

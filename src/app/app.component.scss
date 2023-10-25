@@ -1,10 +1,17 @@
-.app-sidebar{
-    display: flex;
-    height: 100%;
+.app-sidebar {
+  display: flex;
+  height: 100%;
 }
 
-.customer-timeline{
+.customer-timeline {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  /* Estilos CSS que se aplicarán en pantallas con un ancho igual o menor a 1000px */
+  .app-sidebar{
     width: 100%;
-    display: flex;
-    justify-content: center;
+  }
 }
