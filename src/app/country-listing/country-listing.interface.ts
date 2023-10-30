@@ -30,3 +30,32 @@ export interface DatePerUser {
   date: string;
   data?: UserData[];
 }
+
+// NUEVAS INTERFACES PARA MIS COUNTRY CARD
+
+export interface CountryCard {
+  id: string;
+  country: string;
+  visa: boolean;
+  language: string;
+  typeOfMoney: string;
+  flag: string;
+  photoURL: string;
+  date: string;
+  weather: string;
+  placesToVisit: PlaceToVisit[];
+}
+export interface PlaceToVisit {
+  placeID: string;
+  transporting: string;
+  singnalPhone: boolean;
+  city: string;
+  hostelReserved: boolean;
+  hostel: string;
+  phoneNumber: string;
+}
+
+export interface DatePerCountry {
+  date: string;
+  data?: CountryCard[];
+}

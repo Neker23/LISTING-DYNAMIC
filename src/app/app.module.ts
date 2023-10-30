@@ -12,6 +12,7 @@ import { DialogUserComponent } from './dialog-user/dialog-user.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DialogComfirmComponent } from './dialog-confirm/dialog-confirm.component';
 import { ActualizarServicio } from './actualizar.service';
+import { CountryListingComponent } from './country-listing/country-listing.component';
 
 
 import {MatMenuModule} from '@angular/material/menu';
@@ -36,6 +37,7 @@ import {MatNativeDateModule} from '@angular/material/core';
     SidebarComponent,
     CustomerTimelineComponent,
     TimelineListingComponent,
+    CountryListingComponent,
     DialogCredentialComponent,
     DialogUserComponent,
     DateFormatPipe,
